@@ -1,0 +1,57 @@
+version: "3.8"
+
+networks:
+  dev-network:
+    driver: bridge
+
+services:
+  dev-container:
+    user: vscode
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    container_name: dev-container
+    volumes:
+      - ..:/workspace:Z
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    depends_on:
+      - vector-db
+      - graph-db
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - dev-network
+
+  vector-db:
+    image: mongodb/mongodb-atlas-local
+    container_name: vector-db
+    restart: always
+    volumes:
+      - vector_data:/data/db
+      - vector_config:/data/configdb
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=jeffrey
+      - MONGODB_INITDB_ROOT_PASSWORD=pw293847
+    ports:
+      - "27017:27017"
+    networks:
+      - dev-network
+
+  graph-db:
+    image: neo4j
+    container_name: graph-db
+    restart: always
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/devpassword
+    volumes:
+      - graph_data:/data
+    networks:
+      - dev-network
+
+volumes:
+  vector_data:
+  vector_config:
+  graph_data:

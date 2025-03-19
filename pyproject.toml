@@ -1,0 +1,37 @@
+[project]
+name = "codebase"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Ahram Oh",email = "ohzakka@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "neo4j (>=5.28.1,<6.0.0)",
+    "motor (>=3.7.0,<4.0.0)",
+    "networkx (>=3.4.2,<4.0.0)",
+    "pydantic (>=2.10.6,<3.0.0)",
+    "sentence-transformers (>=3.4.1,<4.0.0)",
+    "dotenv (>=0.9.9,<0.10.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+mypy = "^1.15.0"
+pytest = "^8.3.5"
+pytest-asyncio = "^0.25.3"
+hypothesis = "^6.128.2"
+pytest-cov = "^6.0.0"
+pylint = "^3.3.5"
+flake8 = "^7.1.2"
+matplotlib = "^3.10.1"
+
+[tool.black]
+target-version=["py311"]
+line-length=120

@@ -1,0 +1,63 @@
+{
+    "name": "Dev Environment with Neo4j and MongoDB Atlas Local",
+    "schemaVersion": "2.2.0",
+    "description": "Development container setup with Neo4j, MongoDB Atlas Local, and Python.",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "service": "dev-container",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "editor.formatOnSave": true,
+                "python.languageServer": "Pylance",
+                "python.linting.enabled": true,
+                "python.linting.flake8Enabled": true,
+                "python.formatting.provider": "black"
+            },
+            "extensions": [
+                // 🔹 Neo4j Extensions
+                "neo4j-extensions.neo4j-for-vscode",
+                "jakeboone02.cypher-query-language",
+                "BrunoVespa.graph-database-browser",
+
+                // 🔹 MongoDB Extensions
+                "mongodb.mongodb-vscode",
+                "aykutsarac.jsoncrack-vscode",
+                "humao.rest-client",
+
+                // 🔹 Python Extensions
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-python.flake8",
+                "ms-python.black-formatter",
+                "ms-python.vscode-pylance",
+                "njpwerner.autodocstring",
+                "hbenl.vscode-test-explorer",  // Test Explorer UI
+                "LittleFoxTeam.vscode-python-test-adapter",  // Python test adapter for pytest/unittest
+                "ms-vscode.test-adapter-converter",  // Ensures compatibility
+
+                // 🔹 General Development & DevOps
+                "esbenp.prettier-vscode",
+                "GraphQL.vscode-graphql",
+                "redhat.vscode-yaml",
+                "vscode-icons-team.vscode-icons",
+                "jebbs.plantuml",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "postCreateCommand": "",
+    "remoteUser": "root",
+    "forwardPorts": [
+        27017,
+        7474,
+        7687
+    ],
+    "shutdownAction": "stopCompose"
+}

@@ -1,8 +1,8 @@
 import ast
 import pytest
 
-from codebase.code_parser.code_visitor import CodeVisitor
-from codebase.code_parser.models import NodeType, GraphNode, Metadata
+from codebase.code_parser.visitor import CodeVisitor
+from codebase.code_graph.models import NodeType, GraphNode, Metadata
 
 
 def test_invalid_project_root():

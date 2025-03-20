@@ -1,5 +1,5 @@
-from codebase.code_parser.code_graph import CodeGraph
-from codebase.code_parser.models import GraphNode, GraphEdge, NodeType, EdgeType, Metadata
+from codebase.code_graph.graph import CodeGraph
+from codebase.code_graph.models import GraphNode, GraphEdge, NodeType, EdgeType, Metadata
 
 
 def create_test_node(node_id, name, source_file=None):
